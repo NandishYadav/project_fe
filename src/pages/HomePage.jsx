@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getTokenFromLocalStorage } from '../utils/authUtils';
+// import './H';
 
 const HomePage = () => {
   const [selectedFilters, setSelectedFilters] = useState({
@@ -22,13 +23,23 @@ const HomePage = () => {
   const fetchHouseListings = async () => {
     try {
       const token = getTokenFromLocalStorage();
-      const response = await axios.get('/api/house-listings', {
-        params: { ...selectedFilters, page: currentPage },
+      const peyload = {
+        // ...selectedFilters,
+        // page: currentPage,
+        // owner: "66535bb5aa88cb285104b73c"
+
+      }
+      console.log(peyload);
+      const url = "http://localhost:4000/api/v1/properties/all";
+      const response = await axios.post(url, {
+        // params: { ...selectedFilters, page: currentPage },
         headers: {
           Authorization: `Bearer ${token}`
-        }
+        },
+        body: peyload
       });
-      setHouseListings(response.data.listings);
+      console.log(response);
+      setHouseListings(response.data.data);
       setTotalPages(response.data.totalPages);
     } catch (error) {
       handleUnauthorizedResponse(error);
@@ -115,11 +126,18 @@ const HomePage = () => {
       </div>
       <div className="house-listing">
         {/* Display house listings */}
-        {houseListings.map(house => (
+        {houseListings && houseListings.map(house => (
           <div key={house.id} className="house-card">
-            {/* Display house information */}
-            <p>{house.name}</p>
-            {/* Add more house details */}
+            <img src={house.image} alt={house.name} className="house-image"/>
+            <div className="house-info">
+              <h2>{house.name}</h2>
+              <p>{house.description}</p>
+              <p>Price: ${house.price}</p>
+              <p>Location: {house.location}</p>
+              <p>Area: {house.area} sqft</p>
+              <p>Rooms: {house.number_of_rooms}</p>
+              <p>Bathrooms: {house.number_of_bathrooms}</p>
+            </div>
           </div>
         ))}
       </div>
