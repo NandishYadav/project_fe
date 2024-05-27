@@ -20,7 +20,7 @@ const SignUpPage = () => {
             phone: phone,
             password: password
         };
-        const url="https://3.110.147.185:8109/api/v1/auth/register"
+        const url="http://3.110.147.185:8109/api/v1/auth/register"
         axios.post(url, userData)
             .then(response => {
                 console.log("=-==-=-=-=-=-=-=-=-=-", response)
