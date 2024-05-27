@@ -55,7 +55,7 @@ const AddHouseForm = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://localhost:4000/api/v1/properties/add',
+            url: 'http://3.110.147.185:8109/api/v1/properties/add',
             headers: { 
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjUzNTBjMWJmYTdiMmE3ZjgzODVkNDMiLCJsYXN0X25hbWUiOiJ5YWRhdiIsImVtYWlsIjoibmFuZHVAZ21haWwuY29tIiwiX192IjowLCJpYXQiOjE3MTY3NDIxMzAsImV4cCI6MTcxNjgyODUzMH0.8OLtsnG2mfe1pOvZPy3adJfi9iE5T3sSKp_lfsu0fJU'
@@ -63,7 +63,7 @@ const AddHouseForm = () => {
             data : data
           };
         
-        // const url = "http://localhost:4000/api/v1/properties/add";
+        // const url = "http://localhost:8109/api/v1/properties/add";
       const response = await axios.request(config);
       console.log(response.data); // Handle success
     } catch (error) {

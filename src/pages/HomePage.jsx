@@ -30,7 +30,7 @@ const HomePage = () => {
 
       }
       console.log(peyload);
-      const url = "http://localhost:4000/api/v1/properties/all";
+      const url = "http://3.110.147.185:8109/api/v1/properties/all";
       const response = await axios.post(url, {
         // params: { ...selectedFilters, page: currentPage },
         headers: {

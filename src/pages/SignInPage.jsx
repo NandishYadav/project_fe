@@ -26,7 +26,7 @@ const SignInPage = () => {
       email,
       password
     };
-    const url="http://localhost:4000/api/v1/auth/login"
+    const url="http://3.110.147.185:8109/api/v1/auth/login"
     axios.post(url, userData)
       .then(response => {
         console.log(response)
